@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users</title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>FirstName</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Active</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <script>
+        fetch("http://localhost:5000/api/users")
+          .then((response) => response.json())
+          .then((data) => {
+            data.forEach((user) => {
+              const tr = document.createElement("tr");
+              tr.innerHTML = ` 
+                <td> ${user.id} </td>
+                <td> ${user.first_name} </td>
+                <td>${user.last_name}</td>
+                <td> ${user.email}</td>
+                <Td> ${user.is_active}</td>
+            `;
+              document.querySelector("tbody").appendchild(tr);
+            });
+          });
+      </script>
+    </table>
+  </body>
+</html>
